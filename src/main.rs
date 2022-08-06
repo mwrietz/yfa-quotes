@@ -1,13 +1,13 @@
-use std::fs::File;
-use std::io::{self, BufRead};
-use std::path::Path;
+//use std::fs::File;
+//use std::io::{self, BufRead};
+//use std::path::Path;
 
 use std::env;
 use std::process;
-use std::fs;
+//use std::fs;
 
-use chrono::prelude::*;
-use std::time::{Duration, UNIX_EPOCH};
+//use chrono::prelude::*;
+//use std::time::{Duration, UNIX_EPOCH};
 use tokio_test;
 use yahoo_finance_api as yahoo;
 
@@ -46,7 +46,7 @@ fn main() {
         // extract just the latest valid quote summery
         // including timestamp,open,close,high,low,volume
         let quote = response.last_quote().unwrap();
-        let time: DateTime<Utc> = DateTime::from(UNIX_EPOCH + Duration::from_secs(quote.timestamp));
+        //let time: DateTime<Utc> = DateTime::from(UNIX_EPOCH + Duration::from_secs(quote.timestamp));
         /*
         println!(
             "{:30} {:6} ${:9.3} ${:9.3} ${:9.3} ${:9.3} {:10}",
