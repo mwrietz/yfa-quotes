@@ -24,7 +24,6 @@ fn main() {
     for i in 0..(tickers.len() - 1) {
         header += &format!("{:10}", &tickers[i]);
     }
-    //header += "\n";
 
     let mut values = String::from("");
     for i in 0..(tickers.len() - 1) {
@@ -40,15 +39,16 @@ fn main() {
 }
 
 fn usage() {
+    println!("{} v{}", get_prog_name(), env!("CARGO_PKG_VERSION"));
+    println!("Usage: {} [TICKER_SYMB] [TICKER_SYMB]...", get_prog_name());
+}
+
+fn get_prog_name() -> String {
     let prog_name = env::current_exe()
         .expect("Can't get the exec path")
         .file_name()
         .expect("Can't get the exec name")
         .to_string_lossy()
         .into_owned();
-
-    println!("{} v{}", prog_name, env!("CARGO_PKG_VERSION"));
-
-    println!("Usage: {} [TICKER_SYMB] [TICKER_SYMB]...", prog_name);
+    prog_name
 }
-
