@@ -1,7 +1,7 @@
 use std::env;
 use std::process;
-use colored::Colorize;
 
+use colored::Colorize;
 use tokio_test;
 use yahoo_finance_api as yahoo;
 
@@ -40,7 +40,15 @@ fn main() {
 }
 
 fn usage() {
-    let prog_path = env::current_exe().unwrap();
-    println!("\nError...\n");
-    println!("Usage: {} ticker1 ticker2", prog_path.file_name().unwrap().to_str().unwrap());
+    let prog_name = env::current_exe()
+        .expect("Can't get the exec path")
+        .file_name()
+        .expect("Can't get the exec name")
+        .to_string_lossy()
+        .into_owned();
+
+    println!("{} v{}", prog_name, env!("CARGO_PKG_VERSION"));
+
+    println!("Usage: {} [TICKER_SYMB] [TICKER_SYMB]...", prog_name);
 }
+
