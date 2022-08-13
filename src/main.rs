@@ -39,8 +39,10 @@ fn main() {
 }
 
 fn usage() {
+    println!();
     println!("{} v{}", get_prog_name(), env!("CARGO_PKG_VERSION"));
     println!("Usage: {} [TICKER_SYMB] [TICKER_SYMB]...", get_prog_name());
+    println!();
 }
 
 fn get_prog_name() -> String {
