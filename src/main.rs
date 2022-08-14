@@ -38,6 +38,7 @@ fn main() {
     values += "\n";
     println!("{}", header.green());
     println!("{}", values);
+    quit();
 }
 
 fn usage() {
