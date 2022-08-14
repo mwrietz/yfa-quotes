@@ -5,11 +5,13 @@ use colored::Colorize;
 use tokio_test;
 use yahoo_finance_api as yahoo;
 
+mod gh_repo_status;
+
 fn main() {
     let args: Vec<String> = env::args().collect();
     if args.len() < 2 {
         usage();
-        process::exit(1);
+        quit();
     }
 
     let mut tickers = Vec::new();
@@ -53,4 +55,10 @@ fn get_prog_name() -> String {
         .to_string_lossy()
         .into_owned();
     prog_name
+}
+
+fn quit() {
+    gh_repo_status::check_version()
+        .expect("check_version error");
+    process::exit(1);
 }
